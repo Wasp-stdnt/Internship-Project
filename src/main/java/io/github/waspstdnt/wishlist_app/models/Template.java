@@ -22,6 +22,6 @@ public class Template {
     private String title;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb", nullable = false)
+    @Column(name="template_fields", columnDefinition = "jsonb", nullable = false)
     private Map<String, Object> templateFields;
 }
