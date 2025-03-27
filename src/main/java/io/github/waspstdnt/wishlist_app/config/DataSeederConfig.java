@@ -16,11 +16,14 @@ import java.util.Map;
 public class DataSeederConfig {
 
     private final TemplateRepository templateRepository;
-    private final ObjectMapper objectMapper;
 
     @Bean
-    @PostConstruct
-    public ApplicationRunner seedTemplates() {
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
+
+    @Bean
+    public ApplicationRunner seedTemplates(ObjectMapper objectMapper) {
         return args -> {
             if (templateRepository.count() == 0) {
                 Template movies = Template.builder()
