@@ -29,7 +29,6 @@ public class DashboardController {
         return "dashboard";
     }
 
-    // Show the List Creation Page
     @GetMapping("/lists/new")
     public String showListCreationForm(Model model) {
         model.addAttribute("wishlistDto", new WishlistDto());
