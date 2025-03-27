@@ -3,6 +3,7 @@ package io.github.waspstdnt.wishlist_app.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.waspstdnt.wishlist_app.models.Template;
 import io.github.waspstdnt.wishlist_app.repositories.TemplateRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,7 @@ public class DataSeederConfig {
     private final ObjectMapper objectMapper;
 
     @Bean
+    @PostConstruct
     public ApplicationRunner seedTemplates() {
         return args -> {
             if (templateRepository.count() == 0) {
