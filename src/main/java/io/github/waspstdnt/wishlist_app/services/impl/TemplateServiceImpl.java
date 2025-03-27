@@ -1,8 +1,9 @@
-package io.github.waspstdnt.wishlist_app.services;
+package io.github.waspstdnt.wishlist_app.services.impl;
 
 import io.github.waspstdnt.wishlist_app.exceptions.TemplateNotFoundException;
 import io.github.waspstdnt.wishlist_app.models.Template;
 import io.github.waspstdnt.wishlist_app.repositories.TemplateRepository;
+import io.github.waspstdnt.wishlist_app.services.TemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

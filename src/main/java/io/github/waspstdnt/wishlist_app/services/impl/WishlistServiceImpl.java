@@ -1,4 +1,4 @@
-package io.github.waspstdnt.wishlist_app.services;
+package io.github.waspstdnt.wishlist_app.services.impl;
 
 import io.github.waspstdnt.wishlist_app.dtos.WishlistDto;
 import io.github.waspstdnt.wishlist_app.exceptions.WishlistNotFoundException;
@@ -7,6 +7,7 @@ import io.github.waspstdnt.wishlist_app.models.User;
 import io.github.waspstdnt.wishlist_app.models.Wishlist;
 import io.github.waspstdnt.wishlist_app.repositories.TemplateRepository;
 import io.github.waspstdnt.wishlist_app.repositories.WishlistRepository;
+import io.github.waspstdnt.wishlist_app.services.WishlistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

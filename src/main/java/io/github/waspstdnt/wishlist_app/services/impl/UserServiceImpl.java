@@ -1,4 +1,4 @@
-package io.github.waspstdnt.wishlist_app.services;
+package io.github.waspstdnt.wishlist_app.services.impl;
 
 import io.github.waspstdnt.wishlist_app.dtos.UserRegistrationDto;
 import io.github.waspstdnt.wishlist_app.exceptions.InvalidCredentialsException;
@@ -6,6 +6,7 @@ import io.github.waspstdnt.wishlist_app.exceptions.UserAlreadyExistsException;
 import io.github.waspstdnt.wishlist_app.exceptions.UserNotFoundException;
 import io.github.waspstdnt.wishlist_app.models.User;
 import io.github.waspstdnt.wishlist_app.repositories.UserRepository;
+import io.github.waspstdnt.wishlist_app.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

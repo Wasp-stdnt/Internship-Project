@@ -1,4 +1,4 @@
-package io.github.waspstdnt.wishlist_app.services;
+package io.github.waspstdnt.wishlist_app.services.impl;
 
 import io.github.waspstdnt.wishlist_app.dtos.EntryDto;
 import io.github.waspstdnt.wishlist_app.exceptions.EntryNotFoundException;
@@ -8,6 +8,7 @@ import io.github.waspstdnt.wishlist_app.models.User;
 import io.github.waspstdnt.wishlist_app.models.Wishlist;
 import io.github.waspstdnt.wishlist_app.repositories.EntryRepository;
 import io.github.waspstdnt.wishlist_app.repositories.WishlistRepository;
+import io.github.waspstdnt.wishlist_app.services.EntryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
