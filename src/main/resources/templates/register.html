@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="register-page">
+<main class="register-main">
+    <div class="card register-card">
+
+        <div class="card-row card-title-row">
+            <h2>Register</h2>
+        </div>
+
+        <form th:action="@{/register}" th:object="${registrationDto}" method="post">
+
+            <div class="card-row form-row">
+                <label for="username">Username</label>
+                <input type="text" id="username" th:field="*{username}" placeholder="Enter username" class="form-control" />
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message"></div>
+            </div>
+
+            <div class="card-row form-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="Enter email" class="form-control" />
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></div>
+            </div>
+
+            <div class="card-row form-row">
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="*{password}" placeholder="Enter password" class="form-control" />
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></div>
+            </div>
+
+            <div class="card-row error-row" th:if="${registrationError}">
+                <div class="alert alert-danger">[[${registrationError}]]</div>
+            </div>
+
+            <div class="card-row submit-row">
+                <button type="submit" class="btn btn-submit">Register</button>
+            </div>
+
+        </form>
+    </div>
+</main>
+</body>
+</html>
