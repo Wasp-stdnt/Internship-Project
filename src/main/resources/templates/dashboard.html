@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - My Wishlist App</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="dashboard-page">
+<header class="dashboard-header">
+  <div class="container header-container">
+    <h1 class="dashboard-title">My Wishlist App</h1>
+    <a th:href="@{/account}" class="btn btn-account">Account</a>
+  </div>
+</header>
+
+<main class="dashboard-main">
+  <div class="card dashboard-card">
+
+    <div class="card-row card-title-row">
+      <h2>Your Wishlists</h2>
+    </div>
+
+    <div class="card-row wishlist-list">
+      <ul>
+        <li th:each="wishlist : ${wishlists}" class="wishlist-item">
+          <span class="wishlist-name">[[${wishlist.title}]]</span>
+
+          <span class="wishlist-actions">
+              <a th:href="@{/lists/{id}(id=${wishlist.id})}" class="btn btn-view">
+                <span class="btn-text">View</span>
+                <span class="btn-icon"><i class="icon-view"></i></span>
+              </a>
+              <a href="#" class="btn btn-delete" th:attr="data-id=${wishlist.id}" id="deleteWishlistBtn">
+                <span class="btn-text">Delete</span>
+                <span class="btn-icon"><i class="icon-delete"></i></span>
+              </a>
+            </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card-row create-button-row">
+      <a th:href="@{/lists/new}" class="btn btn-create">Create New Wishlist</a>
+    </div>
+
+  </div>
+</main>
+
+<div id="confirmationModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p id="modalMessage">Are you sure?</p>
+    <div class="modal-actions">
+      <button id="confirmBtn" class="btn btn-confirm">Confirm</button>
+      <button id="cancelBtn" class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
