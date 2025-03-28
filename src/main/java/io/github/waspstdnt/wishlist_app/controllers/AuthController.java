@@ -86,29 +86,29 @@ public class AuthController {
         return "account";
     }
 
-    @PostMapping("/account/update")
-    public String updateAccount(@Valid @ModelAttribute("registrationDto") UserRegistrationDto registrationDto,
-                                BindingResult bindingResult,
-                                HttpSession session,
-                                Model model) {
-        User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser == null) {
-            return "redirect:/login";
-        }
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("currentUser", currentUser);
-            return "account";
-        }
-        try {
-            User updatedUser = userService.updateUser(currentUser.getId(), registrationDto);
-            session.setAttribute("currentUser", updatedUser);
-            model.addAttribute("updateSuccess", "Account updated successfully.");
-            return "account";
-        } catch (UserNotFoundException e) {
-            model.addAttribute("updateError", e.getMessage());
-            return "account";
-        }
-    }
+//    @PostMapping("/account/update")
+//    public String updateAccount(@Valid @ModelAttribute("registrationDto") UserRegistrationDto registrationDto,
+//                                BindingResult bindingResult,
+//                                HttpSession session,
+//                                Model model) {
+//        User currentUser = (User) session.getAttribute("currentUser");
+//        if (currentUser == null) {
+//            return "redirect:/login";
+//        }
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("currentUser", currentUser);
+//            return "account";
+//        }
+//        try {
+//            User updatedUser = userService.updateUser(currentUser.getId(), registrationDto);
+//            session.setAttribute("currentUser", updatedUser);
+//            model.addAttribute("updateSuccess", "Account updated successfully.");
+//            return "account";
+//        } catch (UserNotFoundException e) {
+//            model.addAttribute("updateError", e.getMessage());
+//            return "account";
+//        }
+//    }
 
     @PostMapping("/account/delete")
     public String deleteAccount(HttpSession session) {
