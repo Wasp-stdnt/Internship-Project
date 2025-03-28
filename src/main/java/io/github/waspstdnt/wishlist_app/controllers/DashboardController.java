@@ -4,6 +4,7 @@ import io.github.waspstdnt.wishlist_app.dtos.WishlistDto;
 import io.github.waspstdnt.wishlist_app.exceptions.WishlistNotFoundException;
 import io.github.waspstdnt.wishlist_app.models.User;
 import io.github.waspstdnt.wishlist_app.models.Wishlist;
+import io.github.waspstdnt.wishlist_app.services.TemplateService;
 import io.github.waspstdnt.wishlist_app.services.WishlistService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class DashboardController {
 
     private final WishlistService wishlistService;
+    private final TemplateService templateService;
 
     @GetMapping("/dashboard")
     public String dashboard(HttpSession session, Model model) {
@@ -32,6 +34,7 @@ public class DashboardController {
     @GetMapping("/lists/new")
     public String showListCreationForm(Model model) {
         model.addAttribute("wishlistDto", new WishlistDto());
+        model.addAttribute("templates", templateService.getAllTemplates());
         return "list_create";
     }
 
@@ -45,6 +48,8 @@ public class DashboardController {
             return "redirect:/login";
         }
         if (bindingResult.hasErrors()) {
+            model.addAttribute("errorDetails", bindingResult.getAllErrors());
+            model.addAttribute("templates", templateService.getAllTemplates());
             return "list_create";
         }
         wishlistService.createWishlist(wishlistDto, currentUser);
