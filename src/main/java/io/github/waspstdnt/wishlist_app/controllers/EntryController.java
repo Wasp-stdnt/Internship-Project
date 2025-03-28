@@ -84,7 +84,7 @@ public class EntryController {
         Wishlist wishlist = entry.getWishlist();
         model.addAttribute("wishlist", wishlist);
         model.addAttribute("template", wishlist.getTemplate());
-        model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
+        model.addAttribute("entryDataFields", entry.getData());
 
         return "entry/entry_view";
     }

@@ -12,7 +12,7 @@
       <h1 class="app-logo">My Wishlist App</h1>
     </div>
     <div class="header-right">
-      <a th:href="@{/templates/dashboard}" class="btn btn-dashboard">Dashboard</a>
+      <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
     </div>
   </div>
 </header>
@@ -49,7 +49,7 @@
     <div class="card-row action-row">
       <a href="#" class="btn btn-delete"
          id="deleteAccountBtn"
-         data-post-url="/account/delete"
+         data-post-url-template="/account/delete"
          data-confirm-message="Are you sure you want to delete your account?">
         Delete Account
       </a>

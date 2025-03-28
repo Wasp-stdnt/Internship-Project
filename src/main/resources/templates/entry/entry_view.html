@@ -26,22 +26,18 @@
 
     <div class="card-row dynamic-fields-row">
       <ul>
-        <li th:each="fieldKey, fieldType : ${templateFields}">
-          <strong th:text="${#strings.capitalize(fieldKey)}">Field</strong>:
-          <span th:text="${entry.data[fieldKey]}">Value</span>
+        <li th:each="entry : ${entryDataFields}">
+          <strong th:text="${#strings.capitalize(#strings.replace(entry.key, '_', ' '))}">Field</strong>:
+          <span th:text="${entry.value == null ? 'No' : (entry.value == 'true' ? 'Yes' :  entry.value)}">Value</span>
         </li>
       </ul>
     </div>
 
     <div class="card-row action-buttons-row">
-      <a th:href="@{/entries/{id}/edit(id=${entry.id})}" class="btn btn-edit">
-        <span class="btn-text">Edit</span>
-        <span class="btn-icon"><i class="icon-edit"></i></span>
-      </a>
       <a href="#" class="btn btn-delete"
          id="deleteEntryBtn"
          data-post-url-template="/entries/{id}/delete"
-         data-id="[[${entry.id}]]"
+         th:data-id="${entry.id}"
          data-confirm-message="Are you sure you want to delete this entry?">
         <span class="btn-text">Delete</span>
         <span class="btn-icon"><i class="icon-delete"></i></span>

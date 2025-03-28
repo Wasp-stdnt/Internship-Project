@@ -3,6 +3,9 @@ package io.github.waspstdnt.wishlist_app.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +26,7 @@ public class User {
 
     @Column(name="password_hash", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Wishlist> wishlists = new ArrayList<>();
 }

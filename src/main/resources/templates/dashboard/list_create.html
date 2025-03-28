@@ -11,7 +11,7 @@
       <h1 class="app-logo">My Wishlist App</h1>
     </div>
     <div class="header-right">
-      <a th:href="@{/templates/dashboard}" class="btn btn-dashboard">Dashboard</a>
+      <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
     </div>
   </div>
 </header>
@@ -36,8 +36,8 @@
           <option value="" disabled selected>Select a template</option>
           <option th:each="template : ${templates}"
                   th:value="${template.id}"
-                  th:text="${template.name}">
-            Template Name
+                  th:text="${template.title}">
+            Template Title
           </option>
         </select>
         <div th:if="${#fields.hasErrors('templateId')}" th:errors="*{templateId}" class="error-message"></div>

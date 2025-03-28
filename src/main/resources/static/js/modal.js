@@ -37,12 +37,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    const deleteButtons = document.querySelectorAll(".btn-delete");
     deleteButtons.forEach(function(button) {
         button.addEventListener("click", function(e) {
             e.preventDefault();
             const urlTemplate = button.getAttribute("data-post-url-template");
             const id = button.getAttribute("data-id");
-            const actionUrl = urlTemplate.replace("{id}", id);
+            let actionUrl = urlTemplate;
+
+            if (id !== null) {
+                actionUrl = urlTemplate.replace("{id}", id);
+            }
+
             const message = button.getAttribute("data-confirm-message") || "Are you sure you want to delete this item?";
             if (actionUrl) {
                 openModal(actionUrl, message);
