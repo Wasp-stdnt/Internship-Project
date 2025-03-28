@@ -41,7 +41,7 @@ public class EntryController {
         model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
         model.addAttribute("entryDto", new EntryDto());
         model.addAttribute("listId", listId);
-        return "entry_create";
+        return "entry/entry_create";
     }
 
     @PostMapping("/lists/{listId}/entries")
@@ -58,7 +58,7 @@ public class EntryController {
             Wishlist wishlist = wishlistService.getWishlistById(listId, currentUser);
             model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
             model.addAttribute("listId", listId);
-            return "entry_create";
+            return "entry/entry_create";
         }
         try {
             entryService.createEntry(listId, entryDto, currentUser);
@@ -68,7 +68,7 @@ public class EntryController {
             model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
             model.addAttribute("creationError", e.getMessage());
             model.addAttribute("listId", listId);
-            return "entry_create";
+            return "entry/entry_create";
         }
     }
 
@@ -86,7 +86,7 @@ public class EntryController {
         model.addAttribute("template", wishlist.getTemplate());
         model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
 
-        return "entry_view";
+        return "entry/entry_view";
     }
 
     @GetMapping("/entries/{id}/edit")
@@ -107,7 +107,7 @@ public class EntryController {
                 .build();
         model.addAttribute("entryDto", entryDto);
         model.addAttribute("entryId", entryId);
-        return "entry_edit";
+        return "entry/entry_edit";
     }
 
     @PostMapping("/entries/{id}/update")
@@ -122,7 +122,7 @@ public class EntryController {
         }
         if (bindingResult.hasErrors()) {
             model.addAttribute("entryId", entryId);
-            return "entry_edit";
+            return "entry/entry_edit";
         }
         try {
             entryService.updateEntry(entryId, entryDto, currentUser);
@@ -130,7 +130,7 @@ public class EntryController {
         } catch (InvalidEntryDataException e) {
             model.addAttribute("updateError", e.getMessage());
             model.addAttribute("entryId", entryId);
-            return "entry_edit";
+            return "entry/entry_edit";
         }
     }
 
@@ -162,6 +162,6 @@ public class EntryController {
         model.addAttribute("entries", filteredEntries);
         model.addAttribute("listId", listId);
 
-        return "list_view";
+        return "entry/list_view";
     }
 }

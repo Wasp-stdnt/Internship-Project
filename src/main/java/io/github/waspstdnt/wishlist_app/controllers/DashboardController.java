@@ -28,14 +28,14 @@ public class DashboardController {
             return "redirect:/login";
         }
         model.addAttribute("wishlists", wishlistService.getWishlistsByUser(currentUser));
-        return "dashboard";
+        return "dashboard/dashboard";
     }
 
     @GetMapping("/lists/new")
     public String showListCreationForm(Model model) {
         model.addAttribute("wishlistDto", new WishlistDto());
         model.addAttribute("templates", templateService.getAllTemplates());
-        return "list_create";
+        return "dashboard/list_create";
     }
 
     @PostMapping("/lists")
@@ -50,7 +50,7 @@ public class DashboardController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errorDetails", bindingResult.getAllErrors());
             model.addAttribute("templates", templateService.getAllTemplates());
-            return "list_create";
+            return "dashboard/list_create";
         }
         wishlistService.createWishlist(wishlistDto, currentUser);
         return "redirect:/dashboard";
@@ -66,7 +66,7 @@ public class DashboardController {
         }
         Wishlist wishlist = wishlistService.getWishlistById(id, currentUser);
         model.addAttribute("wishlist", wishlist);
-        return "list_view";
+        return "dashboard/list_view";
     }
 
 //    @GetMapping("/lists/{id}/edit")

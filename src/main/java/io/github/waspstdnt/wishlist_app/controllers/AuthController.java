@@ -22,13 +22,13 @@ public class AuthController {
 
     @GetMapping("/")
     public String landing() {
-        return "landing";
+        return "auth/landing";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("registrationDto", new UserRegistrationDto());
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
@@ -37,7 +37,7 @@ public class AuthController {
                                HttpSession session,
                                Model model) {
         if (bindingResult.hasErrors()) {
-            return "register";
+            return "auth/register";
         }
         try {
             User user = userService.registerUser(registrationDto);
@@ -45,13 +45,13 @@ public class AuthController {
             return "redirect:/dashboard";
         } catch (UserAlreadyExistsException e) {
             model.addAttribute("registrationError", e.getMessage());
-            return "register";
+            return "auth/register";
         }
     }
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login";
+        return "auth/login";
     }
 
     @PostMapping("/login")
@@ -65,7 +65,7 @@ public class AuthController {
             return "redirect:/dashboard";
         } catch (InvalidCredentialsException | UserNotFoundException e) {
             model.addAttribute("loginError", e.getMessage());
-            return "login";
+            return "auth/login";
         }
     }
 
@@ -83,7 +83,7 @@ public class AuthController {
         }
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("registrationDto", new UserRegistrationDto(currentUser.getUsername(), currentUser.getEmail(), ""));
-        return "account";
+        return "auth/account";
     }
 
 //    @PostMapping("/account/update")
