@@ -69,40 +69,40 @@ public class DashboardController {
         return "list_view";
     }
 
-    @GetMapping("/lists/{id}/edit")
-    public String editList(@PathVariable("id") Long id,
-                           HttpSession session,
-                           Model model) throws WishlistNotFoundException {
-        User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser == null) {
-            return "redirect:/login";
-        }
-        Wishlist wishlist = wishlistService.getWishlistById(id, currentUser);
-        model.addAttribute("wishlist", wishlist);
-
-        Long templateId = wishlist.getTemplate() != null ? wishlist.getTemplate().getId() : null;
-        model.addAttribute("wishlistDto", new WishlistDto(wishlist.getTitle(), templateId));
-        return "list_edit";
-    }
-
-    @PostMapping("/lists/{id}/update")
-    public String updateList(@PathVariable("id") Long id,
-                             @Valid @ModelAttribute("wishlistDto") WishlistDto wishlistDto,
-                             BindingResult bindingResult,
-                             HttpSession session,
-                             Model model) throws WishlistNotFoundException {
-        User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser == null) {
-            return "redirect:/login";
-        }
-        if (bindingResult.hasErrors()) {
-            Wishlist wishlist = wishlistService.getWishlistById(id, currentUser);
-            model.addAttribute("wishlist", wishlist);
-            return "list_edit";
-        }
-        wishlistService.updateWishlist(id, wishlistDto, currentUser);
-        return "redirect:/lists/" + id;
-    }
+//    @GetMapping("/lists/{id}/edit")
+//    public String editList(@PathVariable("id") Long id,
+//                           HttpSession session,
+//                           Model model) throws WishlistNotFoundException {
+//        User currentUser = (User) session.getAttribute("currentUser");
+//        if (currentUser == null) {
+//            return "redirect:/login";
+//        }
+//        Wishlist wishlist = wishlistService.getWishlistById(id, currentUser);
+//        model.addAttribute("wishlist", wishlist);
+//
+//        Long templateId = wishlist.getTemplate() != null ? wishlist.getTemplate().getId() : null;
+//        model.addAttribute("wishlistDto", new WishlistDto(wishlist.getTitle(), templateId));
+//        return "list_edit";
+//    }
+//
+//    @PostMapping("/lists/{id}/update")
+//    public String updateList(@PathVariable("id") Long id,
+//                             @Valid @ModelAttribute("wishlistDto") WishlistDto wishlistDto,
+//                             BindingResult bindingResult,
+//                             HttpSession session,
+//                             Model model) throws WishlistNotFoundException {
+//        User currentUser = (User) session.getAttribute("currentUser");
+//        if (currentUser == null) {
+//            return "redirect:/login";
+//        }
+//        if (bindingResult.hasErrors()) {
+//            Wishlist wishlist = wishlistService.getWishlistById(id, currentUser);
+//            model.addAttribute("wishlist", wishlist);
+//            return "list_edit";
+//        }
+//        wishlistService.updateWishlist(id, wishlistDto, currentUser);
+//        return "redirect:/lists/" + id;
+//    }
 
     @PostMapping("/lists/{id}/delete")
     public String deleteList(@PathVariable("id") Long id, HttpSession session) throws WishlistNotFoundException {
