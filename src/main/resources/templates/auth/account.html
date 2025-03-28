@@ -47,21 +47,35 @@
     </form>
 
     <div class="card-row action-row">
-      <a href="#" class="btn btn-delete" id="deleteAccountBtn">Delete Account</a>
-      <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+      <a href="#" class="btn btn-delete"
+         id="deleteAccountBtn"
+         data-post-url="/account/delete"
+         data-confirm-message="Are you sure you want to delete your account?">
+        Delete Account
+      </a>
+
+      <a href="#" class="btn btn-logout"
+         id="logoutBtn"
+         data-post-url="/logout"
+         data-confirm-message="Are you sure you want to logout?">
+        Logout
+      </a>
     </div>
   </div>
 </main>
 
 <div id="confirmationModal" class="modal" style="display: none;">
+  <div class="modal-overlay"></div>
   <div class="modal-content">
-    <p id="modalMessage">Are you sure?</p>
+    <p id="modalMessage">Are you sure you want to proceed?</p>
     <div class="modal-actions">
-      <button id="confirmBtn" class="btn btn-confirm">Confirm</button>
-      <button id="cancelBtn" class="btn btn-cancel">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn btn-confirm">Confirm</button>
+      <button id="cancelDeleteBtn" class="btn btn-cancel">Cancel</button>
     </div>
   </div>
 </div>
+
+<script th:src="@{/js/modal.js}"></script>
 
 </body>
 </html>
