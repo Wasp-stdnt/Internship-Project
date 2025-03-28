@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List View - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="list-view-page">
+<header class="create-header">
+    <div class="container header-container">
+        <div class="header-left">
+            <h1 class="app-logo">My Wishlist App</h1>
+        </div>
+        <div class="header-right">
+            <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
+        </div>
+    </div>
+</header>
+
+<main class="list-view-main">
+    <div class="card list-view-card">
+
+        <div class="card-row list-title-row">
+            <h2 th:text="${wishlist.title}">Wishlist Title</h2>
+        </div>
+
+        <div class="card-row entries-list">
+            <ul>
+                <li th:each="entry : ${wishlist.entries}" class="entry-item">
+                    <span class="entry-title" th:text="${entry.title}">Entry Title</span>
+
+                    <span class="entry-actions">
+                      <a th:href="@{/entries/{id}(id=${entry.id})}" class="btn btn-view-entry">
+                        <span class="btn-text">View</span>
+                        <span class="btn-icon"><i class="icon-view"></i></span>
+                      </a>
+                      <a th:href="@{/entries/{id}/edit(id=${entry.id})}" class="btn btn-edit-entry">
+                        <span class="btn-text">Edit</span>
+                        <span class="btn-icon"><i class="icon-edit"></i></span>
+                      </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-row action-buttons-row">
+            <a th:href="@{/entries/new(listId=${wishlist.id})}" class="btn btn-add-entry">
+                <span class="btn-text">Add Entry</span>
+                <span class="btn-icon"><i class="icon-add"></i></span>
+            </a>
+            <a th:href="@{/entries/filter(listId=${wishlist.id})}" class="btn btn-filter-entries">
+                <span class="btn-text">Filter Entries</span>
+                <span class="btn-icon"><i class="icon-filter"></i></span>
+            </a>
+        </div>
+
+    </div>
+</main>
+</body>
+</html>
