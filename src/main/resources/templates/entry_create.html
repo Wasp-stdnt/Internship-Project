@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Entry - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="entry-create-page">
+
+<header class="entry-create-header">
+    <div class="container header-container">
+        <div class="header-left">
+            <h1 class="app-logo">Create New Entry</h1>
+        </div>
+        <div class="header-right">
+            <a th:href="@{/lists/{listId}(listId=${listId})}" class="btn btn-back">Back to List</a>
+        </div>
+    </div>
+</header>
+
+<main class="entry-create-main">
+    <div class="card entry-create-card">
+        <form th:action="@{/lists/{listId}/entries(listId=${listId})}" th:object="${entryDto}" method="post">
+
+            <div class="card-row form-row">
+                <label for="title">Entry Title</label>
+                <input type="text" id="title" th:field="*{title}" placeholder="Enter entry title" class="form-control" />
+                <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></div>
+            </div>
+
+            <div class="card-row dynamic-fields">
+                <h3>Details</h3>
+                <div th:each="field : ${templateFields}">
+                    <div class="form-row">
+                        <label th:for="${field.key}" th:text="${#strings.capitalize(field.key)}">Field</label>
+
+                        <input type="text" th:if="${field.value=='string'}" th:field="*{data[__${field.key}__]}" class="form-control" />
+
+                        <input type="number" th:if="${field.value=='integer'}" th:field="*{data[__${field.key}__]}" class="form-control" />
+
+                        <input type="number" step="0.01" th:if="${field.value=='decimal'}" th:field="*{data[__${field.key}__]}" class="form-control" />
+
+                        <div th:if="${field.value=='boolean'}" class="form-check">
+                            <input type="checkbox" th:field="*{data[__${field.key}__]}" class="form-check-input" id="checkbox__${field.key}" />
+                            <label th:for="checkbox__${field.key}" class="form-check-label" th:text="${#strings.capitalize(field.key)}">Boolean</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-row error-row" th:if="${creationError}">
+                <div class="alert alert-danger" th:text="${creationError}"></div>
+            </div>
+
+            <div class="card-row submit-row">
+                <button type="submit" class="btn btn-submit">Create Entry</button>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+</body>
+</html>

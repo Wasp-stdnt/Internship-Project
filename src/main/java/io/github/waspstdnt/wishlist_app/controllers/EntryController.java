@@ -3,9 +3,12 @@ package io.github.waspstdnt.wishlist_app.controllers;
 import io.github.waspstdnt.wishlist_app.dtos.EntryDto;
 import io.github.waspstdnt.wishlist_app.exceptions.EntryNotFoundException;
 import io.github.waspstdnt.wishlist_app.exceptions.InvalidEntryDataException;
+import io.github.waspstdnt.wishlist_app.exceptions.WishlistNotFoundException;
 import io.github.waspstdnt.wishlist_app.models.Entry;
 import io.github.waspstdnt.wishlist_app.models.User;
+import io.github.waspstdnt.wishlist_app.models.Wishlist;
 import io.github.waspstdnt.wishlist_app.services.EntryService;
+import io.github.waspstdnt.wishlist_app.services.WishlistService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,13 +25,20 @@ import java.util.Map;
 public class EntryController {
 
     private final EntryService entryService;
+    private final WishlistService wishlistService;
 
     @GetMapping("/lists/{listId}/entries/new")
-    public String showEntryCreationForm(@PathVariable("listId") Long listId, Model model, HttpSession session) {
+    public String showEntryCreationForm(@PathVariable("listId") Long listId,
+                                        Model model,
+                                        HttpSession session) throws WishlistNotFoundException {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
             return "redirect:/login";
         }
+
+        Wishlist wishlist = wishlistService.getWishlistById(listId, currentUser);
+
+        model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
         model.addAttribute("entryDto", new EntryDto());
         model.addAttribute("listId", listId);
         return "entry_create";
@@ -39,12 +49,14 @@ public class EntryController {
                               @Valid @ModelAttribute("entryDto") EntryDto entryDto,
                               BindingResult bindingResult,
                               HttpSession session,
-                              Model model) {
+                              Model model) throws WishlistNotFoundException {
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
             return "redirect:/login";
         }
         if (bindingResult.hasErrors()) {
+            Wishlist wishlist = wishlistService.getWishlistById(listId, currentUser);
+            model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
             model.addAttribute("listId", listId);
             return "entry_create";
         }
@@ -52,6 +64,8 @@ public class EntryController {
             entryService.createEntry(listId, entryDto, currentUser);
             return "redirect:/lists/" + listId;
         } catch (InvalidEntryDataException e) {
+            Wishlist wishlist = wishlistService.getWishlistById(listId, currentUser);
+            model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
             model.addAttribute("creationError", e.getMessage());
             model.addAttribute("listId", listId);
             return "entry_create";
