@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Wishlist - My Wishlist App</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="list-create-page">
+<header class="create-header">
+  <div class="container header-container">
+    <div class="header-left">
+      <h1 class="app-logo">My Wishlist App</h1>
+    </div>
+    <div class="header-right">
+      <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
+    </div>
+  </div>
+</header>
+
+<main class="create-main">
+  <div class="card create-card">
+    <div class="card-row card-title-row">
+      <h2>New Wishlist</h2>
+    </div>
+
+    <form th:action="@{/lists}" th:object="${wishlistDto}" method="post">
+
+      <div class="card-row form-row">
+        <label for="title">Wishlist Title</label>
+        <input type="text" id="title" th:field="*{title}" placeholder="Enter wishlist title" class="form-control" />
+        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></div>
+      </div>
+
+      <div class="card-row form-row">
+        <label for="templateId">Template</label>
+        <select id="templateId" th:field="*{templateId}" class="form-control">
+          <option value="" disabled selected>Select a template</option>
+          <option th:each="template : ${templates}"
+                  th:value="${template.id}"
+                  th:text="${template.name}">
+            Template Name
+          </option>
+        </select>
+        <div th:if="${#fields.hasErrors('templateId')}" th:errors="*{templateId}" class="error-message"></div>
+      </div>
+
+      <div class="card-row error-row" th:if="${errorDetails}">
+        <div class="alert alert-danger">
+          <ul>
+            <li th:each="err : ${errorDetails}" th:text="${err.defaultMessage}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card-row submit-row">
+        <button type="submit" class="btn btn-submit">Create Wishlist</button>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>
