@@ -95,7 +95,11 @@ public class EntryController {
         if (currentUser == null) {
             return "redirect:/login";
         }
+
         Entry entry = entryService.getEntryById(entryId, currentUser);
+        Wishlist wishlist = entry.getWishlist();
+        model.addAttribute("wishlist", wishlist);
+        model.addAttribute("templateFields", wishlist.getTemplate().getTemplateFields());
 
         EntryDto entryDto = EntryDto.builder()
                 .title(entry.getTitle())
