@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>View Entry - My Wishlist App</title>
+  <title>Список Побажань</title>
   <link rel="stylesheet" th:href="@{/css/common/base.css}">
   <link rel="stylesheet" th:href="@{/css/common/button.css}">
   <link rel="stylesheet" th:href="@{/css/common/header.css}">
@@ -15,11 +15,11 @@
 <header class="header">
   <div class="container">
     <div class="header-left">
-      <h1 class="logo">My Wishlist App</h1>
+      <h1 class="logo">Список Побажань</h1>
     </div>
     <div class="header-right">
       <a th:href="@{/lists/{id}(id=${wishlist.id})}" class="header-btn btn-dashboard">
-        <span class="btn-text">Back to List</span>
+        <span class="btn-text">Назад до Списку</span>
         <span class="btn-icon"><i class="icon-back"></i></span>
       </a>
     </div>
@@ -36,8 +36,8 @@
     <div class="card-row dynamic-fields-row">
       <ul>
         <li th:each="entry : ${entryDataFields}">
-          <strong th:text="${#strings.capitalize(#strings.replace(entry.key, '_', ' '))}">Field</strong>:
-          <span th:text="${entry.value == null ? 'No' : (entry.value == 'true' ? 'Yes' :  entry.value)}">Value</span>
+          <strong th:text="${#strings.capitalize(#strings.replace(entry.key, '_', ' '))}">Field</strong>
+          <span th:text="${entry.value == null ? 'Ні' : (entry.value == 'true' ? 'Так' :  entry.value)}">Value</span>
         </li>
       </ul>
     </div>
@@ -47,8 +47,8 @@
          id="deleteEntryBtn"
          data-post-url-template="/entries/{id}/delete"
          th:data-id="${entry.id}"
-         data-confirm-message="Are you sure you want to delete this entry?">
-        <span class="btn-text">Delete</span>
+         data-confirm-message="Ви впевнені, що хочете видалити даний запис?">
+        <span class="btn-text">Видалити</span>
         <span class="btn-icon"><i class="icon-delete"></i></span>
       </a>
     </div>
@@ -60,8 +60,8 @@
   <div class="modal-content">
     <p id="modalMessage">Are you sure you want to proceed?</p>
     <div class="modal-actions">
-      <button id="confirmDeleteBtn" class="btn btn-confirm">Confirm</button>
-      <button id="cancelDeleteBtn" class="btn btn-cancel">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn btn-confirm">Підтвердити</button>
+      <button id="cancelDeleteBtn" class="btn btn-cancel">Відмінити</button>
     </div>
   </div>
 </div>

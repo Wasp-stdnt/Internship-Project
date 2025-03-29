@@ -27,78 +27,78 @@ public class DataSeederConfig {
         return args -> {
             if (templateRepository.count() == 0) {
                 Template movies = Template.builder()
-                        .title("Movies")
+                        .title("Фільми")
                         .templateFields(objectMapper.readValue(
                                 """
                                 {
-                                    "genre": "string",
-                                    "director": "string",
-                                    "release_year": "integer",
-                                    "duration_minutes": "integer",
-                                    "rating": "decimal",
-                                    "watched": "boolean"
+                                    "жанр": "string",
+                                    "директор": "string",
+                                    "рік випуску": "integer",
+                                    "тривалість (хв)": "integer",
+                                    "оцінка": "decimal",
+                                    "переглянуто": "boolean"
                                 }
                                 """, Map.class))
                         .build();
                 templateRepository.save(movies);
 
                 Template tvShows = Template.builder()
-                        .title("TV Shows")
+                        .title("Серіали")
                         .templateFields(objectMapper.readValue(
                                 """
                                 {
-                                    "genre": "string",
-                                    "seasons": "integer",
-                                    "episodes": "integer",
-                                    "network": "string",
-                                    "status": "string",
-                                    "watching": "boolean",
-                                    "watched": "boolean"
+                                    "жанр": "string",
+                                    "к-ть сезонів": "integer",
+                                    "к-ть епізодів": "integer",
+                                    "мережа": "string",
+                                    "статус": "string",
+                                    "в процесі перегляду": "boolean",
+                                    "переглянуто": "boolean"
                                 }
                                 """, Map.class))
                         .build();
                 templateRepository.save(tvShows);
 
                 Template books = Template.builder()
-                        .title("Books")
+                        .title("Книги")
                         .templateFields(objectMapper.readValue(
                                 """
                                 {
-                                    "author": "string",
-                                    "genre": "string",
-                                    "pages": "integer",
-                                    "published_year": "integer",
-                                    "read": "boolean"
+                                    "автор": "string",
+                                    "жанр": "string",
+                                    "сторінки": "integer",
+                                    "рік випуску": "integer",
+                                    "прочитано": "boolean"
                                 }
                                 """, Map.class))
                         .build();
                 templateRepository.save(books);
 
                 Template videoGames = Template.builder()
-                        .title("Video Games")
+                        .title("Відео Ігри")
                         .templateFields(objectMapper.readValue(
                                 """
                                 {
-                                    "platform": "string",
-                                    "genre": "string",
-                                    "developer": "string",
-                                    "release_year": "integer",
-                                    "completed": "boolean"
+                                    "платформа": "string",
+                                    "жанр": "string",
+                                    "розробник": "string",
+                                    "рік випуску": "integer",
+                                    "пройдено": "boolean"
                                 }
                                 """, Map.class))
                         .build();
                 templateRepository.save(videoGames);
 
                 Template musicAlbums = Template.builder()
-                        .title("Music Albums")
+                        .title("Музичні Альбоми")
                         .templateFields(objectMapper.readValue(
                                 """
                                 {
-                                    "artist": "string",
-                                    "genre": "string",
-                                    "release_year": "integer",
-                                    "track_count": "integer",
-                                    "favorite": "boolean"
+                                    "виконавець": "string",
+                                    "жанр": "string",
+                                    "рік випуску": "integer",
+                                    "к-ть пісень": "integer",
+                                    "улюблений": "boolean"
                                 }
                                 """, Map.class))
                         .build();

@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 actionUrl = urlTemplate.replace("{id}", id);
             }
 
-            const message = button.getAttribute("data-confirm-message") || "Are you sure you want to delete this item?";
+            const message = button.getAttribute("data-confirm-message") || "Ви впевнені?";
             if (actionUrl) {
                 openModal(actionUrl, message);
             }

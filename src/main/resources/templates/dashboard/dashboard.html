@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard - My Wishlist App</title>
+  <title>Список Побажань</title>
   <link rel="stylesheet" th:href="@{/css/common/base.css}">
   <link rel="stylesheet" th:href="@{/css/common/button.css}">
   <link rel="stylesheet" th:href="@{/css/common/header.css}">
@@ -14,11 +14,11 @@
 <header class="header">
   <div class="container">
     <div class="header-left">
-      <h1 class="logo">My Wishlist App</h1>
+      <h1 class="logo">Список Побажань</h1>
     </div>
     <div class="header-right">
       <a th:href="@{/account}" class="header-btn btn-dashboard">
-        <span class="btn-text">Account</span>
+        <span class="btn-text">Аккаунт</span>
         <span class="btn-icon"><i class="icon-account"></i></span>
       </a>
     </div>
@@ -29,7 +29,7 @@
   <div class="card">
 
     <div class="card-row card-title-row">
-      <h2>Your Wishlists</h2>
+      <h2>Ваші списки</h2>
     </div>
 
     <div class="card-row wishlist-list">
@@ -39,15 +39,15 @@
 
           <span class="wishlist-actions">
               <a th:href="@{/lists/{id}(id=${wishlist.id})}" class="btn btn-view">
-                <span class="btn-text">View</span>
+                <span class="btn-text">Переглянути</span>
                 <span class="btn-icon"><i class="icon-view"></i></span>
               </a>
               <a href="#" class="btn btn-delete"
                  data-post-url-template="/lists/{id}/delete"
                  th:data-id="${wishlist.id}"
-                 data-confirm-message="Are you sure you want to delete this wishlist?"
+                 data-confirm-message="Ви впевнені, що хочете видалити даний список?"
                  id="deleteWishlistBtn">
-                <span class="btn-text">Delete</span>
+                <span class="btn-text">Видалити</span>
                 <span class="btn-icon"><i class="icon-delete"></i></span>
               </a>
           </span>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="card-row create-button-row">
-      <a th:href="@{/lists/new}" class="btn btn-create">Create New Wishlist</a>
+      <a th:href="@{/lists/new}" class="btn btn-create">Створити новий список</a>
     </div>
 
   </div>
@@ -65,10 +65,10 @@
 <div id="confirmationModal" class="modal" style="display: none;">
   <div class="modal-overlay"></div>
   <div class="modal-content">
-    <p id="modalMessage">Are you sure you want to proceed?</p>
+    <p id="modalMessage">Ви впевнені, що хочете продовжити?</p>
     <div class="modal-actions">
-      <button id="confirmDeleteBtn" class="btn btn-confirm">Confirm</button>
-      <button id="cancelDeleteBtn" class="btn btn-cancel">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn btn-confirm">Підтвердити</button>
+      <button id="cancelDeleteBtn" class="btn btn-cancel">Відмінити</button>
     </div>
   </div>
 </div>

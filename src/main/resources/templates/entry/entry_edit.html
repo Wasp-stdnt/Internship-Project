@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Entry - My Wishlist App</title>
+    <title>Список Побажань</title>
     <link rel="stylesheet" th:href="@{/css/common/base.css}">
     <link rel="stylesheet" th:href="@{/css/common/button.css}">
     <link rel="stylesheet" th:href="@{/css/common/header.css}">
@@ -14,11 +14,11 @@
 <header class="header">
     <div class="container">
         <div class="header-left">
-            <h1 class="logo">My Wishlist App</h1>
+            <h1 class="logo">Список Побажань</h1>
         </div>
         <div class="header-right">
             <a th:href="@{/lists/{listId}(listId=${wishlist.getId()})}" class="header-btn btn-dashboard">
-                <span class="btn-text">Back to List</span>
+                <span class="btn-text">Назад до Списку</span>
                 <span class="btn-icon"><i class="icon-back"></i></span>
             </a>
         </div>
@@ -30,8 +30,8 @@
         <form th:action="@{/entries/{id}/update(id=${entryId})}" th:object="${entryDto}" method="post">
 
             <div class="card-row form-row">
-                <label for="title">Entry Title</label>
-                <input type="text" id="title" th:field="*{title}" placeholder="Enter entry title" class="form-control" />
+                <label for="title">Назва запису</label>
+                <input type="text" id="title" th:field="*{title}" class="form-control" />
                 <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></div>
             </div>
 
@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-row submit-row">
-                <button type="submit" class="btn btn-submit">Update Entry</button>
+                <button type="submit" class="btn btn-submit">Підтвердити зміни</button>
             </div>
 
         </form>

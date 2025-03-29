@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List View - My Wishlist App</title>
+    <title>Список Побажань</title>
     <link rel="stylesheet" th:href="@{/css/common/base.css}">
     <link rel="stylesheet" th:href="@{/css/common/button.css}">
     <link rel="stylesheet" th:href="@{/css/common/header.css}">
@@ -13,11 +13,11 @@
 <header class="header">
     <div class="container">
         <div class="header-left">
-            <h1 class="logo">My Wishlist App</h1>
+            <h1 class="logo">Список Побажань</h1>
         </div>
         <div class="header-right">
             <a th:href="@{/dashboard}" class="header-btn btn-dashboard">
-                <span class="btn-text">Dashboard</span>
+                <span class="btn-text">Головна</span>
                 <span class="btn-icon"><i class="icon-dashboard"></i></span>
             </a>
         </div>
@@ -52,7 +52,7 @@
 
         <div class="card-row action-buttons-row">
             <a th:href="@{/lists/{listId}/entries/new(listId=${wishlist.id})}" class="btn btn-add-entry">
-                <span class="btn-text">Add Entry</span>
+                <span class="btn-text">Додати запис</span>
                 <span class="btn-icon"><i class="icon-add"></i></span>
             </a>
             <a th:href="@{/lists/{listId}/entries/filter(listId=${wishlist.id})}" class="btn btn-filter-entries" style="display: none;">

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Account Settings - My Wishlist App</title>
+  <title>Список Побажань</title>
   <link rel="stylesheet" th:href="@{/css/common/base.css}">
   <link rel="stylesheet" th:href="@{/css/common/button.css}">
   <link rel="stylesheet" th:href="@{/css/common/header.css}">
@@ -16,7 +16,7 @@
 <header class="header">
   <div class="container">
     <div class="header-left">
-      <h1 class="logo">My Wishlist App</h1>
+      <h1 class="logo">Список Побажань</h1>
     </div>
     <div class="header-right">
       <a th:href="@{/dashboard}" class="header-btn btn-dashboard">
@@ -37,12 +37,12 @@
     <form th:action="@{/account/update}" th:object="${registrationDto}" method="post">
 
       <div class="card-row form-row">
-        <label for="username">Username</label>
+        <label for="username">Ім'я користувача</label>
         <input type="text" id="username" th:field="*{username}" readonly class="form-control" />
       </div>
 
       <div class="card-row form-row">
-        <label for="email">Email</label>
+        <label for="email">Емейл</label>
         <input type="email" id="email" th:field="*{email}" readonly class="form-control" />
       </div>
 
@@ -60,15 +60,15 @@
       <a href="#" class="btn btn-delete"
          id="deleteAccountBtn"
          data-post-url-template="/account/delete"
-         data-confirm-message="Are you sure you want to delete your account?">
-        Delete Account
+         data-confirm-message="Ви впевнені, що хочете видалити ваш аккаунт?">
+        Видалити аккаунт
       </a>
 
       <a href="#" class="btn btn-logout"
          id="logoutBtn"
          data-post-url="/logout"
-         data-confirm-message="Are you sure you want to logout?">
-        Logout
+         data-confirm-message="Ви впевнені, що хочете вийти?">
+        Вийти
       </a>
     </div>
   </div>
@@ -79,8 +79,8 @@
   <div class="modal-content">
     <p id="modalMessage">Are you sure you want to proceed?</p>
     <div class="modal-actions">
-      <button id="confirmDeleteBtn" class="btn btn-confirm">Confirm</button>
-      <button id="cancelDeleteBtn" class="btn btn-cancel">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn btn-confirm">Підтвердити</button>
+      <button id="cancelDeleteBtn" class="btn btn-cancel">Відмінити</button>
     </div>
   </div>
 </div>
