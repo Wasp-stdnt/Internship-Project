@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Entry - My Wishlist App</title>
-    <link rel="stylesheet" th:href="@{/css/base.css}">
-    <link rel="stylesheet" th:href="@{/css/button.css}">
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/card.css}">
-    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" th:href="@{/css/common/base.css}">
+    <link rel="stylesheet" th:href="@{/css/common/button.css}">
+    <link rel="stylesheet" th:href="@{/css/common/header.css}">
+    <link rel="stylesheet" th:href="@{/css/common/card.css}">
+    <link rel="stylesheet" th:href="@{/css/common/form.css}">
+    <link rel="stylesheet" th:href="@{/css/custom/entry/entry-edit.css}">
 </head>
 <body class="entry-edit-page">
 <header class="header">
@@ -35,7 +36,6 @@
             </div>
 
             <div class="card-row dynamic-fields">
-                <h3>Details</h3>
                 <div th:each="field : ${templateFields}">
                     <div class="form-row">
                         <label th:for="${field.key}" th:text="${#strings.capitalize(field.key)}">Field</label>

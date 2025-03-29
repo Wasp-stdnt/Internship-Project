@@ -1,0 +1,14 @@
+.entry-create-page .card .card-title-row h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.entry-create-page .card .submit-row button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    border-radius: 4px;
+}

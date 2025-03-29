@@ -1,0 +1,23 @@
+.list-create-page main .card {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.list-create-page .card-title-row h2 {
+    text-align: center;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.list-create-page .submit-row button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    border-radius: 4px;
+}

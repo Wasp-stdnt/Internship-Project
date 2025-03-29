@@ -1,0 +1,31 @@
+.entry-view-page .card .card-title-row h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.entry-view-page .card .dynamic-fields-row ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.entry-view-page .card .dynamic-fields-row li {
+    padding: 12px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-view-page .card .dynamic-fields-row li:last-child {
+    border-bottom: none;
+}
+
+.action-buttons-row .btn-delete {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    margin-top: 20px;
+    border-radius: 4px;
+}
