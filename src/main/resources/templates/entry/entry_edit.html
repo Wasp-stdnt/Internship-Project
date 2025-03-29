@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Entry - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/card.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body class="entry-edit-page">
-
-<header class="entry-edit-header">
-    <div class="container header-container">
+<header class="header">
+    <div class="container">
         <div class="header-left">
-            <h1 class="app-logo">Create New Entry</h1>
+            <h1 class="logo">My Wishlist App</h1>
         </div>
         <div class="header-right">
-            <a th:href="@{/lists/{listId}(listId=${wishlist.getId()})}" class="btn btn-back">Back to List</a>
+            <a th:href="@{/lists/{listId}(listId=${wishlist.getId()})}" class="header-btn btn-dashboard">
+                <span class="btn-text">Back to List</span>
+                <span class="btn-icon"><i class="icon-back"></i></span>
+            </a>
         </div>
     </div>
 </header>
 
-<main class="entry-edit-main">
-    <div class="card entry-edit-card">
+<main>
+    <div class="card">
         <form th:action="@{/entries/{id}/update(id=${entryId})}" th:object="${entryDto}" method="post">
 
             <div class="card-row form-row">

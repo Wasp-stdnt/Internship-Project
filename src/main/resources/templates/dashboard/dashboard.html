@@ -3,17 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard - My Wishlist App</title>
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/button.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/card.css}">
+  <link rel="stylesheet" th:href="@{/css/modal.css}">
 </head>
 <body class="dashboard-page">
-<header class="dashboard-header">
-  <div class="container header-container">
-    <h1 class="dashboard-title">My Wishlist App</h1>
-    <a th:href="@{/account}" class="btn btn-account">Account</a>
+<header class="header">
+  <div class="container">
+    <div class="header-left">
+      <h1 class="logo">My Wishlist App</h1>
+    </div>
+    <div class="header-right">
+      <a th:href="@{/account}" class="header-btn btn-dashboard">
+        <span class="btn-text">Account</span>
+        <span class="btn-icon"><i class="icon-account"></i></span>
+      </a>
+    </div>
   </div>
 </header>
 
-<main class="dashboard-main">
-  <div class="card dashboard-card">
+<main>
+  <div class="card">
 
     <div class="card-row card-title-row">
       <h2>Your Wishlists</h2>

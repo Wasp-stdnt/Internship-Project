@@ -1,0 +1,90 @@
+form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-row label {
+    flex: 0 0 150px;
+    margin-right: 16px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.form-control,
+select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+.form-check-input {
+    margin-right: 8px;
+}
+
+.card-row {
+    margin-bottom: 16px;
+}
+
+.error-row {
+    color: #f44336;
+    padding: 8px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+.submit-row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-buttons-row,
+.action-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+    .action-buttons-row {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
+    .form-row label {
+        margin-bottom: 4px;
+        width: 100%;
+    }
+    .form-row .form-control,
+    .form-row select {
+        width: 100%;
+    }
+}

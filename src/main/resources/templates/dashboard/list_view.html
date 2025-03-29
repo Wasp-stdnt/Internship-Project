@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>List View - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/card.css}">
 </head>
 <body class="list-view-page">
-<header class="create-header">
-    <div class="container header-container">
+<header class="header">
+    <div class="container">
         <div class="header-left">
-            <h1 class="app-logo">My Wishlist App</h1>
+            <h1 class="logo">My Wishlist App</h1>
         </div>
         <div class="header-right">
-            <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
+            <a th:href="@{/dashboard}" class="header-btn btn-dashboard">
+                <span class="btn-text">Dashboard</span>
+                <span class="btn-icon"><i class="icon-dashboard"></i></span>
+            </a>
         </div>
     </div>
 </header>
 
-<main class="list-view-main">
-    <div class="card list-view-card">
+<main>
+    <div class="card">
 
-        <div class="card-row list-title-row">
+        <div class="card-row card-title-row">
             <h2 th:text="${wishlist.title}">Wishlist Title</h2>
         </div>
 
@@ -29,11 +36,11 @@
                     <span class="entry-title" th:text="${entry.title}">Entry Title</span>
 
                     <span class="entry-actions">
-                      <a th:href="@{/entries/{id}(id=${entry.id})}" class="btn btn-view-entry">
+                      <a th:href="@{/entries/{id}(id=${entry.id})}" class="btn btn-view">
                         <span class="btn-text">View</span>
                         <span class="btn-icon"><i class="icon-view"></i></span>
                       </a>
-                      <a th:href="@{/entries/{id}/edit(id=${entry.id})}" class="btn btn-edit-entry">
+                      <a th:href="@{/entries/{id}/edit(id=${entry.id})}" class="btn btn-submit">
                         <span class="btn-text">Edit</span>
                         <span class="btn-icon"><i class="icon-edit"></i></span>
                       </a>

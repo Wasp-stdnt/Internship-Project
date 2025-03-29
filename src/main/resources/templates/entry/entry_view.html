@@ -3,24 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>View Entry - My Wishlist App</title>
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/button.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/card.css}">
+  <link rel="stylesheet" th:href="@{/css/modal.css}">
 </head>
 <body class="entry-view-page">
 
-<header class="entry-view-header">
-  <div class="container header-container">
+<header class="header">
+  <div class="container">
     <div class="header-left">
-      <h1 class="app-logo">My Wishlist App</h1>
+      <h1 class="logo">My Wishlist App</h1>
     </div>
     <div class="header-right">
-      <a th:href="@{/lists/{id}(id=${wishlist.id})}" class="btn btn-back">Back to List</a>
+      <a th:href="@{/lists/{id}(id=${wishlist.id})}" class="header-btn btn-dashboard">
+        <span class="btn-text">Back to List</span>
+        <span class="btn-icon"><i class="icon-back"></i></span>
+      </a>
     </div>
   </div>
 </header>
 
-<main class="entry-view-main">
-  <div class="card entry-view-card">
+<main>
+  <div class="card">
 
-    <div class="card-row entry-title-row">
+    <div class="card-row card-title-row">
       <h2 th:text="${entry.title}">Entry Title</h2>
     </div>
 

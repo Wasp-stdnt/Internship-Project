@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Create New Wishlist - My Wishlist App</title>
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/button.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/card.css}">
+  <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body class="list-create-page">
-<header class="create-header">
-  <div class="container header-container">
+<header class="header">
+  <div class="container">
     <div class="header-left">
-      <h1 class="app-logo">My Wishlist App</h1>
+      <h1 class="logo">My Wishlist App</h1>
     </div>
     <div class="header-right">
-      <a th:href="@{/dashboard}" class="btn btn-dashboard">Dashboard</a>
+      <a th:href="@{/dashboard}" class="header-btn btn-dashboard">
+        <span class="btn-text">Dashboard</span>
+        <span class="btn-icon"><i class="icon-dashboard"></i></span>
+      </a>
     </div>
   </div>
 </header>
 
-<main class="create-main">
-  <div class="card create-card">
+<main>
+  <div class="card">
     <div class="card-row card-title-row">
       <h2>New Wishlist</h2>
     </div>

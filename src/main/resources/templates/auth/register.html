@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Register - My Wishlist App</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/card.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body class="register-page">
-<main class="register-main">
-    <div class="card register-card">
+<header class="header">
+    <div class="container">
+        <div class="header-left">
+            <h1 class="logo">My Wishlist App</h1>
+        </div>
+        <div class="header-right">
+            <a th:href="@{/}" class="header-btn btn-dashboard">
+                <span class="btn-text">Go Back</span>
+                <span class="btn-icon"><i class="icon-back"></i></span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="card">
 
         <div class="card-row card-title-row">
             <h2>Register</h2>
